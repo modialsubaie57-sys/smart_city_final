@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!-- تعديل بسيط لاختبار الدفع -->
+
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ✅ توافق الجوال -->
+  <title>أنشطتك يا {{ username }}</title>
+
+  <!-- ✅ أيقونات الموقع -->
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon-48x48.png') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+  <link rel="apple-touch-icon-precomposed" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+
+  <!-- ✅ ملفات التنسيق -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <style>
+    /* ✅ تحسين العرض على الجوال */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, #002f4b, #005f6b);
+      color: white;
+      direction: rtl;
+      box-sizing: border-box;
+    }
+
+    .activity-box {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .activity-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .activity-card {
+      flex: 1 1 140px;
+      min-width: 120px;
+      max-width: 180px;
+      text-align: center;
+      padding: 16px;
+      font-size: 16px;
+    }
+
+    .top-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .top-button {
+      font-size: 16px;
+      padding: 12px 20px;
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      .activity-card {
+        font-size: 14px;
+        padding: 12px;
+      }
+
+      .top-button {
+        font-size: 14px;
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <!-- ✅ شريط التنقل -->
+  <div class="top-buttons">
+    <a href="/تقرير" class="top-button" onclick="playClick()">
+      📊 <span>عرض التقرير</span>
+    </a>
+    <a href="/نهاية" class="top-button" onclick="playClick()">
+      🔚 <span>إنهاء اليوم</span>
+    </a>
+  </div>
+
+  <!-- ✅ صندوق الأنشطة -->
+  <div class="activity-box">
+    <h1>🌟 مرحبًا {{ username }}!</h1>
+    <p>اختر نشاطك الذكي لبداية يومك:</p>
+
+    <div class="activity-row">
+      <a href="/نشاط/1" class="activity-card" onclick="showStars(event)">💼 <span>الذهاب للعمل</span></a>
+      <a href="/نشاط/2" class="activity-card" onclick="showStars(event)">🏥 <span>زيارة المستشفى</span></a>
+      <a href="/نشاط/3" class="activity-card" onclick="showStars(event)">🛒 <span>التسوق </span></a>
+      <a href="/نشاط/4" class="activity-card" onclick="showStars(event)">🎁 <span> نشاط ترفيهي</span></a>
+      <a href="/نشاط/5" class="activity-card" onclick="showStars(event)">📚 <span>التعليم الذكي</span></a>
+    </div>
+  </div>
+
+  <!-- ✅ صوت النقر -->
+  <audio id="clickSound" src="{{ url_for('static', filename='click.mp3') }}"></audio>
+
+  <!-- ✅ كود النجوم والصوت -->
+  <script>
+    function playClick() {
+      document.getElementById('clickSound').play();
+    }
+
+    function showStars(e) {
+      e.preventDefault();
+      playClick();
+      const target = e.currentTarget;
+      const rect = target.getBoundingClientRect();
+
+      for (let i = 0; i < 10; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.textContent = '⭐';
+
+        star.style.left = `${rect.left + rect.width / 2}px`;
+        star.style.top = `${rect.top + rect.height / 2}px`;
+        star.style.setProperty('--x', `${(Math.random() - 0.5) * 200}px`);
+        star.style.setProperty('--y', `${(Math.random() - 0.5) * 200}px`);
+
+        document.body.appendChild(star);
+        setTimeout(() => star.remove(), 800);
+      }
+
+      setTimeout(() => {
+        window.location.href = target.href;
+      }, 300);
+    }
+  </script>
+</body>
+</html>
+

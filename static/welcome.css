@@ -35,12 +35,12 @@ body {
 /* ✅ اللوقو */
 .logo-container {
   z-index: 1;
-  margin-top: 2px;
-  margin-bottom: -1px;
-  animation: fadeInLogo 1.5s ease-in-out;
-    display: flex;
+  margin-top: 50px;
+  margin-bottom: 60px;
+  display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeInLogo 1.5s ease-in-out;
 }
 
 .logo-container img {
@@ -48,11 +48,19 @@ body {
   max-width: 95%;
   display: block;
   margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(0, 224, 255, 0.4);
+  animation: pulseLogo 2.5s infinite ease-in-out;
 }
 
 @keyframes fadeInLogo {
   from { opacity: 0; transform: scale(0.8); }
   to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseLogo {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.9; }
 }
 
 /* صندوق الترحيب */
@@ -134,27 +142,33 @@ body {
   0%, 100% { box-shadow: 0 0 10px rgba(0,191,165,0.4); }
   50% { box-shadow: 0 0 20px rgba(0,191,165,0.8); }
 }
-.logo-container img {
-  width: 240px;
-  max-width: 95%;
-  display: block;
-  margin: 0 auto;
-  animation: pulseLogo 2.5s infinite ease-in-out;
-}
 
-@keyframes pulseLogo {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.9; }
-}
-.logo-container img {
-  box-shadow: 0 0 30px rgba(0, 224, 255, 0.4);
-}
-.logo-container img {
-  width: 240px;
-  max-width: 95%;
-  display: block;
-  margin: 0 auto;
-  border-radius: 50%;           /* ✨ يخلي الصورة دائرية */
-  box-shadow: 0 0 30px rgba(0, 224, 255, 0.4); /* ظل متوهج */
-  animation: pulseLogo 2.5s infinite ease-in-out;
+/* ✅ استجابة للجوال */
+@media (max-width: 480px) {
+  .logo-container img {
+    width: 180px;
+  }
+
+  .welcome-box {
+    padding: 30px 20px;
+    max-width: 95%;
+  }
+
+  .fade-in {
+    font-size: 24px;
+  }
+
+  .slide-up {
+    font-size: 16px;
+  }
+
+  .form-animate input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .form-animate button {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
 }

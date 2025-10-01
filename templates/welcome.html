@@ -2,17 +2,19 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ✅ استجابة للجوال -->
   <title>مرحبًا بك</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='welcome.css') }}">
 </head>
 <body>
   <div class="overlay"></div>
 
-  <!-- ✅ اللوقو في المنتصف فوق الترحيب -->
+  <!-- ✅ اللوقو في المنتصف وبشكل دائري -->
   <div class="logo-container">
     <img src="{{ url_for('static', filename='logo.png') }}" alt="شعار موضي">
   </div>
 
+  <!-- ✅ صندوق الترحيب -->
   <div class="welcome-box">
     <h1 class="fade-in">👋 أهلًا بك في المدينة الذكية!</h1>
     <p class="slide-up">اكتب اسمك وابدأ رحلتك التقنية والإبداعية الآن ✨</p>
@@ -23,4 +25,5 @@
   </div>
 </body>
 </html>
+
 

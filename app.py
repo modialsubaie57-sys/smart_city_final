@@ -68,6 +68,10 @@ def welcome():
         session["points"] = 0
         return redirect(url_for("main_home"))
     return render_template("welcome.html")
+@app.route("/splash")
+def splash():
+    return render_template("splash.html")
+
 
 # ✅ الصفحة الرئيسية
 @app.route("/home")
@@ -142,14 +146,6 @@ def reset_leaderboard():
         return "<h2>✅ تم تصفير لوحة الشرف بنجاح</h2>"
     else:
         return "<h2>⚠️ ملف لوحة الشرف غير موجود</h2>"
-
-@app.route('/')
-def splash():
-    return render_template('splash.html')
-
-@app.route('/home')
-def home():
-    return render_template('index.html')
 
 
 # ✅ تشغيل التطبيق محليًا (Render يستخدم gunicorn)

@@ -143,9 +143,14 @@ def reset_leaderboard():
     else:
         return "<h2>⚠️ ملف لوحة الشرف غير موجود</h2>"
 
-@app.route("/splash")
+@app.route('/')
 def splash():
-    return render_template("splash.html")
+    return render_template('splash.html')
+
+@app.route('/home')
+def home():
+    return render_template('index.html')
+
 
 # ✅ تشغيل التطبيق محليًا (Render يستخدم gunicorn)
 if __name__ == "__main__":

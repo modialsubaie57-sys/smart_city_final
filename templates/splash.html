@@ -1,40 +1,34 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>المدينة الذكية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #002f4b, #005f6b);
+      background-color: #002f4b;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      font-family: 'Cairo', sans-serif;
     }
-
-    .logo {
-      width: 160px;
-      animation: zoomIn 1.5s ease;
+    img {
+      width: 180px;
+      animation: fadeIn 2s ease-in-out;
     }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
-
-  <!-- ✅ تحويل تلقائي بعد 3 ثواني -->
   <script>
     setTimeout(() => {
-      window.location.href = "/"; // رابط الصفحة الرئيسية
+      window.location.href = "/home";
     }, 3000);
   </script>
 </head>
 <body>
-  <img src="{{ url_for('static', filename='logo.png') }}" alt="شعار المدينة الذكية" class="logo">
+  <img src="{{ url_for('static', filename='logo.png') }}" alt="شعار موضي">
 </body>
 </html>

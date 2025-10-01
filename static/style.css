@@ -592,3 +592,23 @@ body {
     padding: 10px 20px;
   }
 }
+/* ✅ تنسيق اللوقو */
+.logo {
+  width: 240px;              /* حجم أكبر */
+  max-width: 95%;
+  display: block;            /* يخليه في سطر لحاله */
+  margin: 40px auto 10px;    /* فوق وتحت ومتوسط */
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* ✅ تأثير دخول ناعم */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
+
   <meta charset="UTF-8">
   <title>{{ activity.title }}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -9,7 +10,7 @@
   <div class="activity-box">
     <h1>{{ activity.title }}</h1>
     <p>{{ activity.description }}</p>
-    <p>✨ هذا النشاط يمنحك <strong>{{ activity.points }}</strong> نقطة</p>
+    <p> هذا النشاط يمنحك ✨<strong>{{ activity.points }}</strong> نقطة</p>
 
     <!-- ✅ صورة النشاط -->
     <div class="activity-image">
